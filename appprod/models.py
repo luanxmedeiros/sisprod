@@ -28,15 +28,17 @@ class MateriaPrima(models.Model):
     quantidade_estoque = models.IntegerField("Quantidade em estoque", max_digits=20)
     unidade_medida = models.ForeignKey(UnidadeMedida, on_delete=models.PROTECT, verbose_name="Unidade de Medida")
 
-class EstapaProducao(models.Model):
+class EtapaProducao(models.Model):
     descricao = models.CharField("Descrição", max_length=250, null=False, unique=True)
     quantidade_utilizada = models.IntegerField("Quantidade utilizada", max_digits=20)
     materia_prima = models.ForeignKey(MateriaPrima, on_delete=models.PROTECT, verbose_name="Matéria Prima")
+    processo_producao = models.ForeignKey(ProcessoProducao, on_delete=models.PROTECT, verbose_name="Processo de Produção")
 
 
 class ProcessoProducao(models.Model):
     data_inicio = models.DateField("Data de Início", null=False)
     data_termino = models.DateField("Data de Término",null=True, blank=True)
-    prestador = models.ForeignKey(Prestador, on_delete=models.PROTECT, verbose_name="Prestador de Serviço")
+    descricao = models.CharField("Descrição", max_length=250, null=False, unique=True)
+    prestador = models.ManyToManyField(Prestador)
 
 
