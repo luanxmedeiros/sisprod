@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-Vindo</title>
+</head>
+<body>
+<table>
+    <tr>
+         <th>Descrição</th>
+         <th>Custo</th>
+         <th>Quantidade</th>
+    </tr>
+    {%for materia in materias%}
+    <tr>
+        <td>{{ materia.descricao | upper }}</td>
+        <td>{{ materia.custo | upper }}</td>
+        <td>{{ materia.quantidade_estoque | upper }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

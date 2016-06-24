@@ -5,6 +5,24 @@
     <title>Bem-Vindo</title>
 </head>
 <body>
-Deu bom!
+<table>
+    <tr>
+        <th>Processo</th>
+        <th>Prestadores</th>
+    </tr>
+
+    {% for prestador in Prestador.objects.all %}
+    <tr>
+        <td> {{ prestador.nome | upper }}</td>
+
+        <td>
+            {% for prestador in processo.prestador.iterator %}
+                  {{ prestador.nome | upper }}
+            {% endfor %}
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
 </body>
 </html>
