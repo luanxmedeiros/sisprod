@@ -33,7 +33,48 @@ prestador4.save()
 prestador5.save()
 prestador6.save()
 
+# Criação de Processo de produção
+processo1=ProcessoProducao(data_inicio="",data_termino="",descricao="Processo de Plantação")
+processo2=ProcessoProducao(data_inicio="",data_termino="",descricao="Processos Alimentícios")
 
+processo1.save()
+processo2.save()
+
+processo1.add(prestador1,prestador2,prestador3,prestador4,prestador5)
+processo2.add(prestador1,prestador2,prestador3,prestador4,prestador5,prestador6)
+
+#Criação de unidade de medida
+unidade1=UnidadeMedida(descricao="Kilograma",sigla="KG")
+unidade2=UnidadeMedida(descricao="Litro",sigla="L")
+unidade3=UnidadeMedida(descricao="Toneladas",sigla="T")
+
+unidade1.save()
+unidade2.save()
+unidade3.save()
+
+# Criação de materia prima
+materia_prima1=MateriaPrima(descricao="Soja", quantidade_estoque=20, unidade_medida=unidade3)
+materia_prima2=MateriaPrima(descricao="Café", quantidade_estoque=20, unidade_medida=unidade3)
+materia_prima3=MateriaPrima(descricao="Milho", quantidade_estoque=20, unidade_medida=unidade3)
+materia_prima4=MateriaPrima(descricao="Carne Bovina", quantidade_estoque=20, unidade_medida=unidade1)
+materia_prima5=MateriaPrima(descricao="Leite de Vaca", quantidade_estoque=20, unidade_medida=unidade2)
+
+materia_prima1.save()
+materia_prima2.save()
+materia_prima3.save()
+materia_prima4.save()
+materia_prima5.save()
+
+# Criando as etapas
+etapa1=EtapaProducao(descricao="cultivo de soja", quantidade_utilizada=18,materia_prima=materia_prima1)
+etapa2=EtapaProducao(descricao="cultivo de café", quantidade_utilizada=17,materia_prima=materia_prima2)
+etapa3=EtapaProducao(descricao="criação de bovinos", quantidade_utilizada=16,materia_prima=materia_prima4)
+etapa4=EtapaProducao(descricao="Produção de laticínios", quantidade_utilizada=15,materia_prima=materia_prima5)
+
+etapa1.save()
+etapa2.save()
+etapa3.save()
+etapa4.save()
 
 
 
