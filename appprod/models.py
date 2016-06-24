@@ -25,7 +25,7 @@ class UnidadeMedida(models.Model):
 
 class MateriaPrima(models.Model):
     descricao = models.CharField("Descrição", max_length=250, null=False, unique=True)
-    quantidade_estoque = models.IntegerField("Quantidade em estoque", max_digits=20)
+    quantidade_estoque = models.DecimalField("Quantidade em estoque", max_digits=20, decimal_places=2)
     unidade_medida = models.ForeignKey(UnidadeMedida, on_delete=models.PROTECT, verbose_name="Unidade de Medida")
 
 class EtapaProducao(models.Model):
@@ -34,7 +34,7 @@ class EtapaProducao(models.Model):
     materia_etapa = models.ManyToManyField(MateriaPrima, through="MateriaEtapa")
 
 class MateriaEtapa(models.Model):
-    quantidade_materia_etapa = models.IntegerField("Quantidade Etapa", max_digits=20)
+    quantidade_materia_etapa = models.DecimalField("Quantidade Etapa", max_digits=20, decimal_places=2)
     etapa_producao = models.ForeignKey(EtapaProducao, on_delete=models.PROTECT, verbose_name="Etapa Produção")
     materia_prima = models.ForeignKey(MateriaPrima, on_delete=models.PROTECT, verbose_name="Matéria Prima")
 
