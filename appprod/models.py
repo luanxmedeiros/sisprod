@@ -1,6 +1,12 @@
 from django.db import models
 
 # Create your models here.
+class Cargo(models.Model):
+    salario = models.DecimalField("Salário",max_digits=20, decimal_places=2)
+    cargo = models.CharField("Cargo", max_length=250, null=False, unique=True)
+
+
+
 
 class Prestador(models.Model):
     nome = models.CharField("Nome", max_length=250, null=False)
@@ -11,9 +17,6 @@ class Prestador(models.Model):
     cargo = models.ForeignKey(Cargo, on_delete=models.PROTECT, verbose_name="Cargo")
 
 
-class Cargo(models.Model):
-    salario = models.DecimalField("Salário",max_digits=20, decimal_places=2)
-    cargo = models.CharField("Cargo", max_length=250, null=False, unique=True)
 
 
 class UnidadeMedida(models.Model):
@@ -22,6 +25,11 @@ class UnidadeMedida(models.Model):
     def __str__(self):
         return "{0:s}-{1:s}".format(self.descricao,self.sigla)
 
+class ProcessoProducao(models.Model):
+    data_inicio = models.DateField("Data de Início", null=True, blank=True)
+    data_termino = models.DateField("Data de Término",null=True, blank=True)
+    descricao = models.CharField("Descrição", max_length=250, null=False, unique=True)
+    prestador = models.ManyToManyField(Prestador)
 
 class MateriaPrima(models.Model):
     descricao = models.CharField("Descrição", max_length=250, null=False, unique=True)
@@ -39,10 +47,6 @@ class MateriaEtapa(models.Model):
     materia_prima = models.ForeignKey(MateriaPrima, on_delete=models.PROTECT, verbose_name="Matéria Prima")
 
 
-class ProcessoProducao(models.Model):
-    data_inicio = models.DateField("Data de Início", null=False)
-    data_termino = models.DateField("Data de Término",null=True, blank=True)
-    descricao = models.CharField("Descrição", max_length=250, null=False, unique=True)
-    prestador = models.ManyToManyField(Prestador)
+
 
 

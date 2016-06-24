@@ -34,14 +34,14 @@ prestador5.save()
 prestador6.save()
 
 # Criação de Processo de produção
-processo1=ProcessoProducao(data_inicio="",data_termino="",descricao="Processo de Plantação")
-processo2=ProcessoProducao(data_inicio="",data_termino="",descricao="Processos Alimentícios")
+processo1=ProcessoProducao(data_inicio="2014-02-03",data_termino="2014-05-20",descricao="Processo de Plantação")
+processo2=ProcessoProducao(data_inicio="2014-02-03",data_termino="2014-06-10",descricao="Processos Alimentícios")
 
 processo1.save()
 processo2.save()
 
-processo1.add(prestador1,prestador2,prestador3,prestador4,prestador5)
-processo2.add(prestador1,prestador2,prestador3,prestador4,prestador5,prestador6)
+processo1.prestador.add(prestador1,prestador2,prestador3,prestador4,prestador5)
+processo2.prestador.add(prestador1,prestador2,prestador3,prestador4,prestador5,prestador6)
 
 #Criação de unidade de medida
 unidade1=UnidadeMedida(descricao="Kilograma",sigla="KG")
@@ -66,15 +66,25 @@ materia_prima4.save()
 materia_prima5.save()
 
 # Criando as etapas
-etapa1=EtapaProducao(descricao="cultivo de soja", quantidade_utilizada=18,materia_prima=materia_prima1)
-etapa2=EtapaProducao(descricao="cultivo de café", quantidade_utilizada=17,materia_prima=materia_prima2)
-etapa3=EtapaProducao(descricao="criação de bovinos", quantidade_utilizada=16,materia_prima=materia_prima4)
-etapa4=EtapaProducao(descricao="Produção de laticínios", quantidade_utilizada=15,materia_prima=materia_prima5)
+etapa1=EtapaProducao(descricao="cultivo de soja", processo_producao=processo1)
+etapa2=EtapaProducao(descricao="cultivo de café", processo_producao=processo1)
+etapa3=EtapaProducao(descricao="criação de bovinos", processo_producao=processo2)
+etapa4=EtapaProducao(descricao="Produção de laticínios", processo_producao=processo2)
 
 etapa1.save()
 etapa2.save()
 etapa3.save()
 etapa4.save()
 
+# Vincular matérias primas as etapas de produção
+matEtapa1 = MateriaEtapa(quantidade_materia_etapa=18, materia_prima=materia_prima1, etapa_producao=etapa1)
+matEtapa2 = MateriaEtapa(quantidade_materia_etapa=15, materia_prima=materia_prima2, etapa_producao=etapa2)
+matEtapa3 = MateriaEtapa(quantidade_materia_etapa=19, materia_prima=materia_prima3, etapa_producao=etapa3)
+matEtapa4 = MateriaEtapa(quantidade_materia_etapa=17, materia_prima=materia_prima4, etapa_producao=etapa4)
+
+matEtapa1.save()
+matEtapa2.save()
+matEtapa3.save()
+matEtapa4.save()
 
 
