@@ -30,9 +30,13 @@ class MateriaPrima(models.Model):
 
 class EtapaProducao(models.Model):
     descricao = models.CharField("Descrição", max_length=250, null=False, unique=True)
-    quantidade_utilizada = models.IntegerField("Quantidade utilizada", max_digits=20)
-    materia_prima = models.ForeignKey(MateriaPrima, on_delete=models.PROTECT, verbose_name="Matéria Prima")
     processo_producao = models.ForeignKey(ProcessoProducao, on_delete=models.PROTECT, verbose_name="Processo de Produção")
+    materia_etapa = models.ManyToManyField(MateriaPrima, through="MateriaEtapa")
+
+class MateriaEtapa(models.Model):
+    quantidade_materia_etapa = models.IntegerField("Quantidade Etapa", max_digits=20)
+    etapa_producao = models.ForeignKey(EtapaProducao, on_delete=models.PROTECT, verbose_name="Etapa Produção")
+    materia_prima = models.ForeignKey(MateriaPrima, on_delete=models.PROTECT, verbose_name="Matéria Prima")
 
 
 class ProcessoProducao(models.Model):
