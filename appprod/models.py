@@ -34,6 +34,7 @@ class ProcessoProducao(models.Model):
 class MateriaPrima(models.Model):
     descricao = models.CharField("Descrição", max_length=250, null=False, unique=True)
     quantidade_estoque = models.DecimalField("Quantidade em estoque", max_digits=20, decimal_places=2)
+    custo = models.DecimalField("Custo", max_digits=20, decimal_places=2)
     unidade_medida = models.ForeignKey(UnidadeMedida, on_delete=models.PROTECT, verbose_name="Unidade de Medida")
 
 class EtapaProducao(models.Model):

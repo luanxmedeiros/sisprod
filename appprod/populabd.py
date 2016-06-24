@@ -53,11 +53,11 @@ unidade2.save()
 unidade3.save()
 
 # Criação de materia prima
-materia_prima1=MateriaPrima(descricao="Soja", quantidade_estoque=20, unidade_medida=unidade3)
-materia_prima2=MateriaPrima(descricao="Café", quantidade_estoque=20, unidade_medida=unidade3)
-materia_prima3=MateriaPrima(descricao="Milho", quantidade_estoque=20, unidade_medida=unidade3)
-materia_prima4=MateriaPrima(descricao="Carne Bovina", quantidade_estoque=20, unidade_medida=unidade1)
-materia_prima5=MateriaPrima(descricao="Leite de Vaca", quantidade_estoque=20, unidade_medida=unidade2)
+materia_prima1=MateriaPrima(descricao="Soja", quantidade_estoque=20, unidade_medida=unidade3, custo=500)
+materia_prima2=MateriaPrima(descricao="Café", quantidade_estoque=20, unidade_medida=unidade3, custo=700)
+materia_prima3=MateriaPrima(descricao="Milho", quantidade_estoque=20, unidade_medida=unidade3, custo=400)
+materia_prima4=MateriaPrima(descricao="Carne Bovina", quantidade_estoque=20, unidade_medida=unidade1, custo=20)
+materia_prima5=MateriaPrima(descricao="Leite de Vaca", quantidade_estoque=20, unidade_medida=unidade2, custo=10)
 
 materia_prima1.save()
 materia_prima2.save()
