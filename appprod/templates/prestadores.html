@@ -10,12 +10,29 @@
          <th>Nome</th>
          <th>E-mail</th>
          <th>Data de Nascimento</th>
+         <th>
+           Processos
+         </th>
     </tr>
     {%for prestador in prestadores%}
     <tr>
         <td>{{ prestador.nome}}</td>
         <td>{{ prestador.email}}</td>
         <td>{{ prestador.data_nascimento}}</td>
+        <td>
+          {% for processo in prestador.processoproducao_set.all %}
+            {{ processo.descricao }}
+            <br>
+            {% for etapa in processo.etapaproducao_set.all %}
+              {{ etapa.descricao }}
+              <br>
+              {% for materia in etapa.materia_primas.all %}
+                {{ materia.descricao }}
+                <br>
+              {% endfor %}
+            {% endfor %}
+          {% endfor %}
+        </td>
     </tr>
     {% endfor %}
 </table>
