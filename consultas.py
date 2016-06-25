@@ -35,6 +35,7 @@ for x in tudo:
 
 '''
 for processo in ProcessoProducao.objects.all():
+<<<<<<< Updated upstream
         print("Processo:", processo.descricao.__str__())
 
 '''
