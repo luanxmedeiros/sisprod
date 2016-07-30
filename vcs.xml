@@ -26,6 +26,10 @@
           <option name="url" value="https://github.com/luanmedeiros/2016.1.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/luanxmedeiros/SGR.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Luan Medeiros\Google Drive\Documentos\GitHub" />
