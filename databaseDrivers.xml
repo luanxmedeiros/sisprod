@@ -22,14 +22,21 @@
     <driver id="derby.remote" name="Derby (Remote)" dialect="Derby">
       <option name="auto-sync" value="true" />
     </driver>
-    <driver id="sqlite.xerial" name="Sqlite (Xerial)" dialect="SQLite">
+    <driver id="sqlite.xerial" name="Sqlite (Xerial)" dialect="PostgreSQL">
       <option name="auto-sync" value="true" />
+      <option name="auto-commit" value="true" />
     </driver>
     <driver id="sybase.ase" name="Sybase (Native)" dialect="Sybase">
       <option name="auto-sync" value="true" />
     </driver>
     <driver id="postgresql" name="PostgreSQL" dialect="PostgreSQL">
       <option name="auto-sync" value="true" />
+      <library>
+        <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/postgresql-driver-license.txt</url>
+      </library>
+      <library>
+        <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/postgresql-9.4-1201.jdbc4.jar</url>
+      </library>
     </driver>
     <driver id="db2" name="DB2 (LUW)" dialect="DB2">
       <option name="auto-sync" value="false" />
